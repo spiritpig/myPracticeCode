@@ -41,3 +41,11 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# unused file
+Debug
+Release
+*.suo
+*.txt
+*.ncb
+image
