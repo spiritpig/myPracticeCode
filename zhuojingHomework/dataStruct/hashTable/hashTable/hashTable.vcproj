@@ -2,8 +2,8 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="7.10"
-	Name="linkedlistPrac922"
-	ProjectGUID="{2D00C8B3-4AE5-4BDA-86C5-43BF2844E3E3}"
+	Name="hashTable"
+	ProjectGUID="{F9D9B573-4041-4086-87A4-B70F50023AF1}"
 	Keyword="Win32Proj">
 	<Platforms>
 		<Platform
@@ -31,10 +31,10 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="$(OutDir)/linkedlistPrac922.exe"
+				OutputFile="$(OutDir)/hashTable.exe"
 				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="$(OutDir)/linkedlistPrac922.pdb"
+				ProgramDatabaseFile="$(OutDir)/hashTable.pdb"
 				SubSystem="1"
 				TargetMachine="1"/>
 			<Tool
@@ -76,7 +76,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="$(OutDir)/linkedlistPrac922.exe"
+				OutputFile="$(OutDir)/hashTable.exe"
 				LinkIncremental="1"
 				GenerateDebugInformation="TRUE"
 				SubSystem="1"
@@ -113,7 +113,10 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
 			<File
-				RelativePath=".\linkedlistPrac922.cpp">
+				RelativePath=".\hashTable.cpp">
+			</File>
+			<File
+				RelativePath=".\myHashTable.cpp">
 			</File>
 			<File
 				RelativePath=".\stdafx.cpp">
@@ -136,7 +139,7 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
 			<File
-				RelativePath=".\myList.h">
+				RelativePath=".\myHashTable.h">
 			</File>
 			<File
 				RelativePath=".\stdafx.h">
