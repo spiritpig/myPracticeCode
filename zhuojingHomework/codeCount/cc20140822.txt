@@ -1,0 +1,14 @@
+     100 files     200 files     300 files     322 text files.
+classified 322 filesDuplicate file check 322 files (247 known unique)Unique:      100 files                                          Unique:      200 files                                               281 unique files.                              
+Counting:  100Counting:  200     243 files ignored.
+
+http://cloc.sourceforge.net v 1.60  T=35.46 s (5.1 files/s, 514.5 lines/s)
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+C++                            117           2321           1782          11669
+C/C++ Header                    63            469            509           1489
+DOS Batch                        2              0              0              6
+-------------------------------------------------------------------------------
+SUM:                           182           2790           2291          13164
+-------------------------------------------------------------------------------飚哥做的飞机游戏，增加了1000+行的代码量

@@ -1,0 +1,15 @@
+// stdafx.h : 标准系统包含文件的包含文件，
+// 或是常用但不常更改的项目特定的包含文件
+//
+
+#pragma once
+
+
+#include <iostream>
+#include <tchar.h>
+
+#define SAFE_DELETE(p) {if(p) {delete p;p=0;}}
+#define SAFE_DELARR(p) {if(p) {delete []p;p=0;}}
+
+// TODO: 在此处引用程序要求的附加头文件
+#include "linkedList.h"

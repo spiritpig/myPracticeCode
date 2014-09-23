@@ -1,0 +1,40 @@
+//////////////////////////////////////////////////////////////////////////
+//
+//	游戏名：ember
+//
+//	  时间：2014.07.27
+//
+//	  作者：pinkbeen
+//
+//////////////////////////////////////////////////////////////////////////
+
+#include "commonHeader.h"
+
+
+//////////////////////////////////////////////////////////////////////////////////
+//
+// 入口点函数
+//
+//////////////////////////////////////////////////////////////////////////////////
+int main( void )
+{
+	lifeInfo emberInfo( 30, 20, 200, 100, "ember" );
+	lifeInfo evilInfo( 20, 15, 100, 100, "evil" );
+
+	srand( (unsigned int)time(NULL) );
+	timer myTimer( 200 );
+
+	emberManager em( emberInfo, "ember", "testModel1.txt", 
+					 evilInfo, "jack", "testModel2.txt" );
+
+	while ( 1 )
+	{
+		if( myTimer.isTimeToDoSomething() )
+		{
+			em.update();
+		}
+	}
+
+
+	return 0;
+}

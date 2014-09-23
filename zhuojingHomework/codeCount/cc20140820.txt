@@ -1,0 +1,14 @@
+     100 files     200 files     300 files     306 text files.
+classified 306 filesDuplicate file check 306 files (239 known unique)Unique:      100 files                                          Unique:      200 files                                               269 unique files.                              
+Counting:  100Counting:  200     228 files ignored.
+
+http://cloc.sourceforge.net v 1.60  T=20.75 s (8.5 files/s, 801.2 lines/s)
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+C++                            113           2173           1767          10349
+C/C++ Header                    61            449            482           1398
+DOS Batch                        2              0              0              6
+-------------------------------------------------------------------------------
+SUM:                           176           2622           2249          11753
+-------------------------------------------------------------------------------

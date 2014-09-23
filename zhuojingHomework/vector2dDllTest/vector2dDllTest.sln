@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vector2dDllTest", "vector2dDllTest\vector2dDllTest.vcproj", "{42C529D4-1D34-41C0-9881-769F9B2F8A7A}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{42C529D4-1D34-41C0-9881-769F9B2F8A7A}.Debug.ActiveCfg = Debug|Win32
+		{42C529D4-1D34-41C0-9881-769F9B2F8A7A}.Debug.Build.0 = Debug|Win32
+		{42C529D4-1D34-41C0-9881-769F9B2F8A7A}.Release.ActiveCfg = Release|Win32
+		{42C529D4-1D34-41C0-9881-769F9B2F8A7A}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

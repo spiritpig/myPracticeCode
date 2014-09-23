@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mfspe915", "mfspe915\mfspe915.vcproj", "{E35EE8AC-F17C-4B07-A0B7-C39615B0A0E0}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{E35EE8AC-F17C-4B07-A0B7-C39615B0A0E0}.Debug.ActiveCfg = Debug|Win32
+		{E35EE8AC-F17C-4B07-A0B7-C39615B0A0E0}.Debug.Build.0 = Debug|Win32
+		{E35EE8AC-F17C-4B07-A0B7-C39615B0A0E0}.Release.ActiveCfg = Release|Win32
+		{E35EE8AC-F17C-4B07-A0B7-C39615B0A0E0}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
