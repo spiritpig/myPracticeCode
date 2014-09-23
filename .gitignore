@@ -48,4 +48,5 @@ Release
 *.suo
 *.txt
 *.ncb
+*.dll
 image
