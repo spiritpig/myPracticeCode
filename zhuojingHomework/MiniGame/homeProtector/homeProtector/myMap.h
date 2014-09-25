@@ -16,9 +16,6 @@ private:
 
 	PSTEXTURE m_pBGTex;
 	SggeSprite *m_pBGSpr;
-
-	PSTEXTURE m_pTowerTex;
-	SggeSprite *m_pTowerSpr;
 };
 
 #endif	// END MYMAP

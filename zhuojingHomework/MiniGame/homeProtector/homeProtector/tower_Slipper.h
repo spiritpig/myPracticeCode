@@ -20,7 +20,9 @@ public:
 private:
 	virtual void _processInput();
 
-	static PSTEXTURE m_TowerTex;
+	static PSTEXTURE m_pTowerTex;
+	static size_t m_TexUseCount;
+	SggeSprite *m_pTowerSpr;
 };
 
 #endif	// END TOWER_SLIPPER

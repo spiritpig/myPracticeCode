@@ -32,7 +32,9 @@ struct towerState
 };
 
 //////////////////////////////////////////////////////////////////////////
+#include "autoTextureManager.h"
 #include "baseTower.h"
+#include "tower_Slipper.h"
 #include "myMap.h"
 #include "GameManager.h"
 

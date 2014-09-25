@@ -14,8 +14,9 @@ public:
 private:
 	void _processInput();
 
-	myMap *m_pMap;
 	Sgge *m_pSgge;
+	myMap *m_pMap;
+	tower_Slipper *m_towerSlipper;
 	bool m_isRun;
 };
 

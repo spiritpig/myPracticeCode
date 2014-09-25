@@ -4,10 +4,12 @@ GameManager::GameManager(void)
 {
 	m_pSgge = SggeCreate( SGGE_VERSION );
 	m_pMap = new myMap;
+	m_towerSlipper =  new tower_Slipper;
 }
 
 GameManager::~GameManager(void)
 {
+	SAFE_DELETE( m_towerSlipper );
 	SAFE_DELETE( m_pMap ); 
 	m_pSgge->Release();
 }
@@ -17,12 +19,14 @@ void GameManager::init()
 	m_isRun = true;
 
 	m_pMap->init();
+	m_towerSlipper->init();
 }
 
 bool GameManager::update()
 {
 	_processInput();
 	m_pMap->update();
+	m_towerSlipper->update();
 
 	return !m_isRun;
 }
@@ -35,6 +39,7 @@ bool GameManager::render()
 
 		/////////////////////////////////////
 		m_pMap->render();
+		m_towerSlipper->render();
 		/////////////////////////////////////
 
 		m_pSgge->Render_End();
