@@ -162,11 +162,11 @@ void Map::Init()
 	m_pCanWalkSpr=new SggeSprite(m_pCanWalk,0.0f,0.0f,40.0f,40.0f);
 	m_pCanWalkSpr->SetHotSpot(20.0f,20.0f);
 
-	m_StartPoint.x=0;
-	m_StartPoint.y=0;
+	m_StartPoint.x=STARTPOS.x;
+	m_StartPoint.y=STARTPOS.y;
 
-	m_EndPoint.x=9;
-	m_EndPoint.y=9;
+	m_EndPoint.x=ENDPOS.x;
+	m_EndPoint.y=ENDPOS.y;
 
 	isFirstFindPath = true;
 	isPathFindFinished = false;
@@ -305,8 +305,8 @@ void Map::Update()
 
 void Map::Render()
 {
-	static float offsetX=220.0f;
-	static float offsetY=120.0f;
+	static float offsetX=20.0f;
+	static float offsetY=20.0f;
 
 	for (r=0;r<ROW;++r)
 	{

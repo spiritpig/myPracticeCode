@@ -8,8 +8,8 @@
 #include <math.h>
 #include <limits.h>
 
-#define ROW 10
-#define COL 10
+#define ROW 15
+#define COL 20
 
 #define SPACE	0
 #define NOWALK	1
@@ -42,6 +42,9 @@ const POINT dirArray[8] = {
 	{ -1,  0 },
 	{ -1, -1 }
 };
+
+const POINT STARTPOS = { 0, 7 };
+const POINT ENDPOS = { 19, 7 };
 
 enum PATH_FINDING_METHOD
 {

@@ -71,4 +71,9 @@ void Manage::_ProcessInput()
 			}
 		}
 	}
+
+	if ( m_pSgge->Input_MouseKeyState( SGGEM_LEFT ) )
+	{
+		
+	}
 }
