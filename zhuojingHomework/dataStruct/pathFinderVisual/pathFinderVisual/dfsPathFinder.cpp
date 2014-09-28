@@ -17,6 +17,7 @@ dfsNode::dfsNode( int x, int y )
 //////////////////////////////////////////////////////////////////////////
 dfsPathFinder::dfsPathFinder()
 {
+	m_pNodeList.reserve(ROW*COL);
 	m_Dir = 0;
 }
 
@@ -27,20 +28,21 @@ dfsPathFinder::~dfsPathFinder()
 void dfsPathFinder::findPath( char (*mapdata)[COL], 
 							 int startX, int startY, 
 							 int endX, int endY,
-							 StackArray<dfsNode,ROW*COL> &path )
+							 vector<dfsNode> &path )
 {
-	path.SetEmpty();
+	m_pNodeList.resize(0);
+	path.resize(0);
 
 	int dir = 0;
 	node.pos.x = startX;
 	node.pos.y = startY;
-	path.Push( node );
+	path.push_back( node );
 
 	mapdata[startY][startX] = WALKED;
 
 	memcpy( walkedMap, mapdata, sizeof(char)*ROW*COL );
 
-	while ( !path.Empty() )
+	while ( !path.empty() )
 	{
 		while ( dir < DIR_NUM )
 		{
@@ -51,8 +53,8 @@ void dfsPathFinder::findPath( char (*mapdata)[COL],
 			{
 				walkedMap[temp.pos.y][temp.pos.x] = WALKED;
 				node.dir = dir+1;
-				path.Push( node );
-				path.Push( temp );
+				path.push_back( node );
+				path.push_back( temp );
 
 				if( (temp.pos.x == endX) &&
 					(temp.pos.y == endY) )
@@ -67,7 +69,8 @@ void dfsPathFinder::findPath( char (*mapdata)[COL],
 
 		// 如果四个方向都无效，该点为无效点，弹出来
 		// 并且，下一次移动的起始方向，变为上一次移动到的方向
-		path.Pop( node );
+		node = path.back();
+		path.pop_back();
 		if ( dir >= DIR_NUM )
 		{
 			dir = node.dir;
@@ -87,15 +90,15 @@ bool dfsPathFinder::findPathOneStep( char (*mapdata)[COL],
 	// 第一次的时候，将起点压入
 	if( isFirst )
 	{
-		m_pNodeList.SetEmpty();
+		m_pNodeList.resize(0);
 		temp.pos.x = startX;
 		temp.pos.y = startY;
 
-		m_pNodeList.Push( temp );
+		m_pNodeList.push_back( temp );
 		mapdata[startY][startX] = WALKED;
 	}
 
-	m_pNodeList.GetTop( node );
+	node = m_pNodeList.back();
 	// 到了终点退出
 	if( node.pos.x == endX &&
 		node.pos.y == endY )
@@ -114,9 +117,9 @@ bool dfsPathFinder::findPathOneStep( char (*mapdata)[COL],
 			m_Dir = 0;
 		}
 
-		if ( !m_pNodeList.Empty() )
+		if ( !m_pNodeList.empty() )
 		{
-			m_pNodeList.Pop();
+			m_pNodeList.pop_back();
 			while ( m_Dir < DIR_NUM )
 			{
 				temp.pos.x = node.pos.x + dirArray[m_Dir].x;
@@ -126,8 +129,8 @@ bool dfsPathFinder::findPathOneStep( char (*mapdata)[COL],
 				{
 					mapdata[temp.pos.y][temp.pos.x] = WALKING;
 					node.dir = m_Dir+1;
-					m_pNodeList.Push( node );
-					m_pNodeList.Push( temp );
+					m_pNodeList.push_back( node );
+					m_pNodeList.push_back( temp );
 
 					if( temp.pos.x == endX &&
 						temp.pos.y == endY )

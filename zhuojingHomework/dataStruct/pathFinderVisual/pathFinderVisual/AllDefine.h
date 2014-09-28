@@ -7,6 +7,8 @@
 #include <tchar.h>
 #include <math.h>
 #include <limits.h>
+#include <vector>
+using std::vector;
 
 #define ROW 15
 #define COL 20

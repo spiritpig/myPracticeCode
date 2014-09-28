@@ -16,7 +16,6 @@ public:
 	dfsPathFinder();
 	~dfsPathFinder();
 
-
 	bool findPathOneStep( char (*mapdata)[COL],
 					  int startX, int startY,
 					  int endX, int endY,
@@ -25,12 +24,12 @@ public:
 	void findPath( char (*mapdata)[COL], 
 					   int startX, int startY,
 					   int endX, int endY,
-					   StackArray<dfsNode,ROW*COL> &path );
+					   vector<dfsNode> &path );
 
 private:
 	int m_Dir;
 	dfsNode node,temp;
-	StackArray<dfsNode,ROW*COL> m_pNodeList;
+	vector<dfsNode> m_pNodeList;
 	char walkedMap[ROW][COL];
 };
 

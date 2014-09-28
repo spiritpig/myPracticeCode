@@ -65,7 +65,7 @@ private:
 	POINT m_EndPoint;
 
 	dfsPathFinder m_DfsPfMan;
-	StackArray<dfsNode,ROW*COL> m_curPath_Dfs;
+	vector<dfsNode> m_curPath_Dfs;
 
 	bfsPathFinder m_BfsPfMan;
 	aStarPathFinder m_AStarPfMan;

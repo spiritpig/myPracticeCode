@@ -173,6 +173,7 @@ void Map::Init()
 	startPathFinding = false;
 
 	m_curPFMethod = DEPTH_FIRST_SEARCH;
+	m_curPath_Dfs.reserve(ROW*COL);
 }
 
 void Map::Update()
@@ -206,9 +207,10 @@ void Map::Update()
 					else
 					{
 						static dfsNode node;
-						while ( !m_curPath_Dfs.Empty() )
+						while ( !m_curPath_Dfs.empty() )
 						{
-							m_curPath_Dfs.Pop( node );
+							node = m_curPath_Dfs.back();
+							m_curPath_Dfs.pop_back();
 							m_Mapdata[node.pos.y][node.pos.x] = PATH;
 						}
 
