@@ -5,6 +5,7 @@
 *.cs     diff=csharp
 *.sln    merge=union
 *.csproj merge=union
+*.vcproj
 *.vbproj merge=union
 *.fsproj merge=union
 *.dbproj merge=union
