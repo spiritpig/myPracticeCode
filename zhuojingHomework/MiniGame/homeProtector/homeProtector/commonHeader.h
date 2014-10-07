@@ -5,6 +5,9 @@
 //////////////////////////////////////////////////////////////////////////
 #include <Windows.h>
 #include <Sgge.h>
+#include <cmath>
+#include <iostream>
+#include "vector2.h"
 #pragma comment( lib, "sgge.lib" )
 
 #ifndef	COMMONHEADER
@@ -22,17 +25,29 @@ enum DAMAGE_TYPE
 
 struct towerState
 {
-	int min_atk;
-	int max_atk;
 	int def;
 	int cost;
 	int atkRange;
-	float atkSpeed;
-	DAMAGE_TYPE at;
+	vector2 pos;
+	bool isFire;
 };
 
+struct towerBulletState
+{
+	int min_atk;
+	int max_atk;
+	vector2 pos;
+	vector2 dir;
+	float speed;
+	DAMAGE_TYPE at;
+};
+// struct COMMONTEXTURE
+// {
+// 	PSTEXTURE texture;
+// 	size_t count;
+// };
+
 //////////////////////////////////////////////////////////////////////////
-#include "autoTextureManager.h"
 #include "baseTower.h"
 #include "tower_Slipper.h"
 #include "myMap.h"

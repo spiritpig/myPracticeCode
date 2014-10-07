@@ -1,5 +1,8 @@
 #include "commonHeader.h"
 
+static PSTEXTURE autoTextureManager::m_pTexture = 0;
+static size_t autoTextureManager::m_useCount = 0;
+
 autoTextureManager::autoTextureManager(void)
 {
 	m_pTexture = NULL;
@@ -11,7 +14,7 @@ autoTextureManager::~autoTextureManager(void)
 	SAFE_DELETE( m_pTexture );
 }
 
-void autoTextureManager::create( Sgge *pEngine, char *filename )
+static void autoTextureManager::create( Sgge *pEngine, char *filename )
 {
 	if ( m_useCount <= 0 )
 	{
@@ -20,7 +23,7 @@ void autoTextureManager::create( Sgge *pEngine, char *filename )
 	++m_useCount;
 }
 
-void autoTextureManager::release( Sgge *pEngine )
+static void autoTextureManager::release( Sgge *pEngine )
 {
 	--m_useCount;
 	if ( m_useCount <= 0 )

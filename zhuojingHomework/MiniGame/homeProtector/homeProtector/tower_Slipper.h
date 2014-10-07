@@ -20,6 +20,13 @@ public:
 private:
 	virtual void _processInput();
 
+	towerState m_TowerState;
+	towerBulletState m_TowerBulletState;
+
+	static PSTEXTURE m_pTowerBulletTex;
+	static size_t m_BulletTexUseCount;
+	SggeSprite *m_pTowerBulletSpr;
+
 	static PSTEXTURE m_pTowerTex;
 	static size_t m_TexUseCount;
 	SggeSprite *m_pTowerSpr;
