@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mapEditor2D", "mapEditor2D.vcproj", "{6165D7D6-6E0B-4374-AC5B-F61BA9441187}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{6165D7D6-6E0B-4374-AC5B-F61BA9441187}.Debug.ActiveCfg = Debug|Win32
+		{6165D7D6-6E0B-4374-AC5B-F61BA9441187}.Debug.Build.0 = Debug|Win32
+		{6165D7D6-6E0B-4374-AC5B-F61BA9441187}.Release.ActiveCfg = Release|Win32
+		{6165D7D6-6E0B-4374-AC5B-F61BA9441187}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
