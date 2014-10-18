@@ -15,6 +15,7 @@ public:
 	myBaseString( const myBaseString &other );
 	~myBaseString();
 
+	int compare( const myBaseString &other );
 	void pop_back();
 	void push_back( const T &val );
 	T* c_Str() const
@@ -22,13 +23,22 @@ public:
 		return m_pStr;
 	}
 
+	myBaseString& operator=( const myBaseString &other );
+	myBaseString operator+( const myBaseString &other );
+	T& operator[]( size_t index )
+	{
+		return m_pStr[index];
+	}
+
 private:
-	size_t getStrLen( const T *str );
+	void _stringCat( T * const dest, const T * const src1, const T * const src2 );
+	size_t _getStringLen( const T *str );
 	void _realloc( size_t count );
 
 	T *m_pStr;
 	size_t m_Len;
 	size_t m_Capacity;
+	size_t m_Index;
 };
 
 template<class T>
@@ -63,7 +73,7 @@ myBaseString<T>::myBaseString( const T *str )
 :	m_pStr( NULL ), 
 	m_Len( 0 ),	m_Capacity( 0 )
 {
-	size_t len = getStrLen( str );
+	size_t len = _getStringLen( str );
 	if ( len > 0 )
 	{
 		m_pStr = new T[len+1];
@@ -102,6 +112,29 @@ myBaseString<T>::~myBaseString()
 }
 
 template<class T>
+int myBaseString<T>::compare( const myBaseString &other )
+{
+	m_Index = 0;
+	while ( (this->m_pStr[m_Index] != 0) ||
+			(other.m_pStr[m_Index] != 0) )
+	{
+		if ( this->m_pStr[m_Index] > other.m_pStr[m_Index] )
+		{
+			return 1;
+		}
+		else
+		if ( this->m_pStr[m_Index] < other.m_pStr[m_Index] )
+		{
+			return -1;
+		}
+
+		++m_Index;
+	}
+
+	return 0;
+}
+
+template<class T>
 void myBaseString<T>::pop_back()
 {
 	if ( m_Len > 0 )
@@ -125,7 +158,59 @@ void myBaseString<T>::push_back( const T &val )
 }
 
 template<class T>
-size_t myBaseString<T>::getStrLen( const T *str )
+myBaseString<T>& myBaseString<T>::operator=( const myBaseString<T> &other )
+{
+	// 重新分配内存
+	if ( this->m_Capacity <= other.m_Len )
+	{
+		this->_realloc(other.m_Len+1);
+	}
+
+	// 复制other的内容
+	m_Index = 0;
+	while ( (this->m_pStr[m_Index] = other.m_pStr[m_Index]) != '\0' )
+	{
+		++m_Index;
+	}
+
+	return *this;
+}
+
+template<class T>
+myBaseString<T> myBaseString<T>::operator+( const myBaseString<T> &other )
+{
+	myBaseString mTemp;
+
+	mTemp.m_Len = _getStringLen( this->m_pStr ) + _getStringLen( other.m_pStr );
+	mTemp.m_Capacity = mTemp.m_Len+1;
+	mTemp.m_pStr = new T[mTemp.m_Len+1];
+	_stringCat( mTemp.m_pStr, this->m_pStr, other.m_pStr );
+
+	return mTemp;
+}
+
+template<class T>
+void myBaseString<T>::_stringCat( T * const dest, const T * const src1, const T * const src2 )
+{
+	size_t destIndex = 0;
+	m_Index = 0;
+	while ( (dest[destIndex] = src1[m_Index]) != '\0' )
+	{
+		++destIndex;
+		++m_Index;
+	}
+
+	m_Index = 0;
+	while ( (dest[destIndex] = src2[m_Index]) != '\0' )
+	{
+		++destIndex;
+		++m_Index;
+	}
+
+}
+
+template<class T>
+size_t myBaseString<T>::_getStringLen( const T *str )
 {
 	size_t len=0;
 	while ( str[len] != 0 )

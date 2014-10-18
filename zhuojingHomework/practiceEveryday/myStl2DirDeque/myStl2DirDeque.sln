@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "myStl2DirDeque", "myStl2DirDeque\myStl2DirDeque.vcproj", "{6EA43D11-AD0E-4D82-AAB9-5E856B56BC3D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{6EA43D11-AD0E-4D82-AAB9-5E856B56BC3D}.Debug.ActiveCfg = Debug|Win32
+		{6EA43D11-AD0E-4D82-AAB9-5E856B56BC3D}.Debug.Build.0 = Debug|Win32
+		{6EA43D11-AD0E-4D82-AAB9-5E856B56BC3D}.Release.ActiveCfg = Release|Win32
+		{6EA43D11-AD0E-4D82-AAB9-5E856B56BC3D}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

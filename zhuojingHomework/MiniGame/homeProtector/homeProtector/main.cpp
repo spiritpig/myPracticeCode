@@ -24,8 +24,8 @@ int WINAPI WinMain( IN HINSTANCE hInstance,
 	g_pSgge->Engine_SetState( SGGEES_USESOUND, true );
 	g_pSgge->Engine_SetState( SGGEES_USEJOYSTICK, true );
 	g_pSgge->Engine_SetState( SGGEES_NOFOCUSACTIVE, true );
-	g_pSgge->Engine_SetState( SGGEES_SCREENWIDTH, 800 );
-	g_pSgge->Engine_SetState( SGGEES_SCREENHEIGHT, 600 );
+	g_pSgge->Engine_SetState( SGGEES_SCREENWIDTH, SCREEN_WIDTH );
+	g_pSgge->Engine_SetState( SGGEES_SCREENHEIGHT, SCREEN_HEIGHT );
 	g_pSgge->Engine_SetState( SGGEES_UPDATEFUNC, update );
 	g_pSgge->Engine_SetState( SGGEES_RENDERFUNC, render );
 	g_pSgge->Engine_Initiate();

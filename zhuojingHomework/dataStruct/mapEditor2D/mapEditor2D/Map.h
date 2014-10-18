@@ -11,6 +11,7 @@ public:
 	void Update();
 	void Render();
 	void changeBlockAttribute( POINT pos );
+	void saveMap( char *filename );
 
 	void turnOffPathDisplay()
 	{
@@ -38,13 +39,18 @@ public:
 		m_curEditState = es;
 	}
 
+
 	~Map(void);
+
+//////////////////////////////////////////////////////////////////////////
+//
+//	渲染相关部分
+//
+//////////////////////////////////////////////////////////////////////////
 private:
+	HWND m_Hwnd;
 	Sgge *m_pSgge;
-private:
-	char m_Mapdata[ROW][COL];
-	char m_initMapdata[ROW][COL];
-	int r,c;
+
 	PSTEXTURE m_pCanWalk;
 	SggeSprite *m_pCanWalkSpr;
 
@@ -66,11 +72,23 @@ private:
 	PSTEXTURE m_pEnd;
 	SggeSprite *m_pEndSpr;
 
+//////////////////////////////////////////////////////////////////////////
+//
+// 数据相关部分
+//
+//////////////////////////////////////////////////////////////////////////
 private:
+	char m_Mapdata[ROW][COL];
+	char m_initMapdata[ROW][COL];
+	int m_MapHeight, m_MapWidth;
+	// 遍历地图所需的循环变量
+	int r,c;
+
 	bool isPathDisplay,
 		 isFirstFindPath, 
 		 isPathFindFinished,
 		 startPathFinding;
+
 
 	EDIT_STATE m_curEditState;
 	PATH_FINDING_METHOD m_curPFMethod;

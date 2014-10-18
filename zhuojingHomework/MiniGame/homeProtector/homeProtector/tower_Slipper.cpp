@@ -6,6 +6,24 @@ size_t tower_Slipper::m_TexUseCount = 0;
 PSTEXTURE tower_Slipper::m_pTowerBulletTex = NULL;
 size_t tower_Slipper::m_BulletTexUseCount = 0;
 
+//////////////////////////////////////////////////////////////////////////
+//
+//	判断子弹是否有效
+//
+//////////////////////////////////////////////////////////////////////////
+bool tower_Slipper::_isBulletValid( const vector2 &v2 )
+{
+	if( (m_TowerBulletState.pos.x >= v2.x-20.0f && m_TowerBulletState.pos.x <= v2.x+20.0f && 
+		 m_TowerBulletState.pos.y >= v2.y-20.0f && m_TowerBulletState.pos.y <= v2.y+20.0f) ||
+		 m_TowerBulletState.pos.x <= 0 || m_TowerBulletState.pos.x >= SCREEN_WIDTH || 
+		 m_TowerBulletState.pos.y <= 0 || m_TowerBulletState.pos.y >= SCREEN_HEIGHT )
+	{
+		return false;
+	}
+
+	return true;
+}
+
 tower_Slipper::tower_Slipper(void)
 {
 	m_pEngine = SggeCreate( SGGE_VERSION );
@@ -62,8 +80,10 @@ void tower_Slipper::init()
 	m_TowerBulletState.at = DT_PHYSICAL_DAMAGE;
 	m_TowerBulletState.min_atk = 13;
 	m_TowerBulletState.max_atk = 25;
-	m_TowerBulletState.speed = 100.0f;
+	m_TowerBulletState.speed = 200.0f;
 	m_TowerBulletState.pos = m_TowerState.pos;
+
+	m_hWnd = GetActiveWindow();
 }
 
 void tower_Slipper::attack()
@@ -97,18 +117,18 @@ void tower_Slipper::render()
 
 void tower_Slipper::_processInput()
 {
-	static vector2 mousePos;
-	//m_pEngine->Input_GetMousePos( &mousePos.x, &mousePos.y );
-	mousePos.x = 100.0f;
-	mousePos.y = 100.0f;
-	//m_pEngine->Input_GetMousePos();
-	m_TowerBulletState.dir = (mousePos-m_TowerState.pos).normalized();
+	static POINT mousePos;
+	GetCursorPos( &mousePos );
+	ScreenToClient( m_hWnd, &mousePos );
+	vector2 mPos( (float)mousePos.x, (float)mousePos.y );
+	m_TowerBulletState.dir = (mPos-m_TowerBulletState.pos).normalized();
 
-	if ( m_TowerBulletState.pos.x >= mousePos.x-10.0f &&
-		m_TowerBulletState.pos.x >= mousePos.x+10.0f && 
-		m_TowerBulletState.pos.y >= mousePos.y-10.0f &&
-		m_TowerBulletState.pos.y <= mousePos.y+10.0f )
+	// 碰撞检测，判断是否碰到了目标或者跳出了边界
+	if( m_TowerState.isFire )
 	{
-		m_TowerBulletState.pos = m_TowerState.pos;
+		if ( !_isBulletValid( mPos ) )
+		{
+			m_TowerBulletState.pos = m_TowerState.pos;
+		}
 	}
 }

@@ -19,6 +19,9 @@ public:
 
 private:
 	virtual void _processInput();
+	bool _isBulletValid( const vector2 &v2 );
+
+	HWND m_hWnd;
 
 	towerState m_TowerState;
 	towerBulletState m_TowerBulletState;

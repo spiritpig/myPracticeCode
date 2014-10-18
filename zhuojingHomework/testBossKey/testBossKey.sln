@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testBossKey", "testBossKey\testBossKey.vcproj", "{F1FA8A10-CD58-479B-A9DC-F4A348BD8B1C}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{F1FA8A10-CD58-479B-A9DC-F4A348BD8B1C}.Debug.ActiveCfg = Debug|Win32
+		{F1FA8A10-CD58-479B-A9DC-F4A348BD8B1C}.Debug.Build.0 = Debug|Win32
+		{F1FA8A10-CD58-479B-A9DC-F4A348BD8B1C}.Release.ActiveCfg = Release|Win32
+		{F1FA8A10-CD58-479B-A9DC-F4A348BD8B1C}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

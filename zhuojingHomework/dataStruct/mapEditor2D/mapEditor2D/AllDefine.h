@@ -18,6 +18,7 @@
 #include <tchar.h>
 #include <math.h>
 #include <limits.h>
+#include <stdio.h>
 #include <vector>
 using std::vector;
 
@@ -31,6 +32,7 @@ using std::vector;
 #define START	4
 #define END		5
 #define PATH	6
+#define MAP_FILENAME "map.txt"
 
 
 /*-----------------------------------------------------------------------------

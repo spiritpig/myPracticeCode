@@ -1,5 +1,22 @@
 #include "AllDefine.h"
 
+// static void readMapFromFile( char * const mapdata, const char * const filename, HWND hWnd )
+// {
+// 	int mw,mh;
+// 	FILE *fp = fopen( filename, "r");
+// 	if ( !fp )
+// 	{
+// 		MessageBox( hWnd, "读取地图错误：文件无法打开", "错误", 0 );
+// 	}
+// 
+// 	fread( &mw, sizeof(int), 1, fp );
+// 	fread( &mh, sizeof(int), 1, fp );
+// 	fread( mapdata, sizeof(char), mw*mh, fp );
+// 	fclose(fp);
+// 
+// 	MessageBox( hWnd, "读取地图成功！", "成功", 0 );
+// }
+
 Map::Map(void)
 {
 	m_pSgge=SggeCreate(SGGE_VERSION);
@@ -76,18 +93,18 @@ Map::~Map(void)
 
 void Map::Init()
 {
-	char tempmapdata[ROW][COL]={
-		{ 0,0,0,0,0,0,0,0,0,0 },
-		{ 0,0,1,1,1,1,1,1,1,0 },
-		{ 0,1,0,0,0,0,0,0,1,0 },
-		{ 0,1,1,0,0,0,0,0,1,0 },
-		{ 0,1,0,1,1,1,1,1,1,0 },
-		{ 0,1,0,1,0,0,1,1,1,0 },
-		{ 0,1,0,1,1,1,0,0,1,0 },
-		{ 0,1,0,0,0,0,0,0,1,0 },
-		{ 0,1,1,1,0,1,1,0,1,1 },
-		{ 1,0,0,0,0,0,1,0,0,0 }
-	};
+	char tempmapdata[ROW][COL]	={
+		 	{ 0,0,0,0,0,0,0,0,0,0 },
+		 	{ 0,0,1,1,1,1,1,1,1,0 },
+		 	{ 0,1,0,0,0,0,0,0,1,0 },
+		 	{ 0,1,1,0,0,0,0,0,1,0 },
+		 	{ 0,1,0,1,1,1,1,1,1,0 },
+		 	{ 0,1,0,1,0,0,1,1,1,0 },
+		 	{ 0,1,0,1,1,1,0,0,1,0 },
+		 	{ 0,1,0,0,0,0,0,0,1,0 },
+		 	{ 0,1,1,1,0,1,1,0,1,1 },
+		 	{ 1,0,0,0,0,0,1,0,0,0 }
+		};
 
 	memcpy(m_Mapdata,tempmapdata,sizeof(m_Mapdata));
 	memcpy(m_initMapdata,tempmapdata,sizeof(m_initMapdata));
@@ -173,9 +190,14 @@ void Map::Init()
 	isPathFindFinished = false;
 	startPathFinding = false;
 
+	m_MapHeight = ROW;
+	m_MapWidth = COL;
+
 	m_curEditState = ES_SPACE;
 	m_curPFMethod = DEPTH_FIRST_SEARCH;
-	m_curPath_Dfs.reserve(ROW*COL);
+	m_curPath_Dfs.reserve(m_MapHeight*m_MapWidth);
+
+	m_Hwnd = GetActiveWindow();
 }
 
 void Map::Update()
@@ -244,9 +266,9 @@ void Map::Render()
 	static float offsetX=20.0f;
 	static float offsetY=20.0f;
 
-	for (r=0;r<ROW;++r)
+	for (r=0;r<m_MapHeight;++r)
 	{
-		for (c=0;c<COL;++c)
+		for (c=0;c<m_MapWidth;++c)
 		{
 			switch(m_Mapdata[r][c])
 			{
@@ -283,12 +305,29 @@ void Map::Render()
 	m_pEndSpr->Render(offsetX+m_EndPoint.x*CELL_SIZE,offsetY+m_EndPoint.y*CELL_SIZE);
 }
 
+void Map::saveMap( char *filename )
+{
+	FILE *fp = fopen( filename, "w");
+	if ( !fp )
+	{
+		MessageBox( m_Hwnd, "保存地图错误：文件无法创建", "错误", 0 );
+	}
+
+	fwrite( &m_MapWidth, sizeof(int), 1, fp );
+	fwrite( &m_MapHeight, sizeof(int), 1, fp );
+	fwrite( m_initMapdata, sizeof(char), m_MapHeight*m_MapWidth, fp );
+
+	fclose(fp);
+
+	MessageBox( m_Hwnd, "保存地图成功！", "成功", 0 );
+}
+
 void Map::changeBlockAttribute( POINT pos )
 {
 	if ( pos.x < 0 || 
-		 pos.x > COL*CELL_SIZE ||
+		 pos.x > m_MapWidth*CELL_SIZE ||
 		 pos.y < 0 || 
-		 pos.y > ROW*CELL_SIZE )
+		 pos.y > m_MapHeight*CELL_SIZE )
 	{
 		return;
 	}
