@@ -1,9 +1,9 @@
 #include "commonHeader.h"
 
-baseTower::baseTower(void)
+iTower::iTower(void)
 {
 }
 
-baseTower::~baseTower(void)
+iTower::~iTower(void)
 {
 }

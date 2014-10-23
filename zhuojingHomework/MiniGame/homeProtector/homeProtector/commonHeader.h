@@ -26,6 +26,11 @@ enum DAMAGE_TYPE
 	DT_BLUDGEONING_DAMAGE,
 };
 
+enum SPECIAL_EFFECT
+{
+	SE_NULL
+};
+
 struct towerState
 {
 	int def;
@@ -44,6 +49,17 @@ struct towerBulletState
 	float speed;
 	DAMAGE_TYPE at;
 };
+
+struct lifeState
+{
+	int min_atk;
+	int max_atk;
+	vector2 pos;
+	vector2 dir;
+	float speed;
+	DAMAGE_TYPE at;
+	SPECIAL_EFFECT se;
+};
 // struct COMMONTEXTURE
 // {
 // 	PSTEXTURE texture;
@@ -51,6 +67,7 @@ struct towerBulletState
 // };
 
 //////////////////////////////////////////////////////////////////////////
+#include "baseLife.h"
 #include "baseTower.h"
 #include "tower_Slipper.h"
 #include "myMap.h"

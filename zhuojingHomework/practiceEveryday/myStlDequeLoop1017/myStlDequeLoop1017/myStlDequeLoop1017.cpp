@@ -26,15 +26,22 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 	printf( "\n" );
 
-	for ( int i=0; i<20; ++i )
+	msdl.erase( msdl.begin() );
+	iter = msdl.begin();
+	for ( iter; iter != msdl.end(); ++iter )
 	{
-		msdl.pop_back();
+		printf( "%d ", *iter );
 	}
-	for ( int j=320; j<340; ++j )
-	{
-		msdl.pop_front();
-	}
+	printf( "\n" );
+
+// 	for ( int i=0; i<20; ++i )
+// 	{
+// 		msdl.pop_back();
+// 	}
+// 	for ( int j=320; j<340; ++j )	
+// 	{
+// 		msdl.pop_front();
+// 	}
 
 	return 0;
 }
-

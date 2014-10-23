@@ -3,10 +3,10 @@
 #ifndef BASETOWER
 #define BASETOWER
 
-class baseTower
+class iTower
 {
 public:
-	baseTower(void) {}
+	iTower(void) {}
 
 	virtual void attack() = 0;
 	virtual void levelUp() = 0;
@@ -16,13 +16,16 @@ public:
 	virtual void update() = 0;
 	virtual void render() = 0;
 
-	virtual ~baseTower(void) {}
+	virtual ~iTower(void) {}
 
 protected:
 	virtual void _processInput() = 0;
 
+	HWND m_hWnd;
 	Sgge *m_pEngine;
+
 	towerState m_TowerState;
+	towerBulletState m_TowerBulletState;
 };
 
 #endif	// END BASETOWER

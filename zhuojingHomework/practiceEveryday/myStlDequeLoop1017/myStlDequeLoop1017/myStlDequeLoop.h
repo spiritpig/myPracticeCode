@@ -138,7 +138,9 @@ public:
 		return last;
 	}
 
+	
 	void insert( const iterator &pos, const T &val );
+	void erase( const iterator &pos );
 	void pop_front();
 	void push_front( const T &val );
 	void pop_back();
@@ -191,6 +193,25 @@ void myStlDequeLoop<T>::insert( const iterator &pos, const T &val )
 	}
 
 	m_pData[endPos] = val;
+}
+
+template<class T>
+void myStlDequeLoop<T>::erase( const iterator &pos )
+{
+	--m_Size;
+	// Ç°ÒÆÔªËØ
+	int cur = (m_LeftIndex + pos.sit)%(int)m_Capacity;
+	int next = (cur+1)%(int)m_Capacity;
+	int endPos = m_RightIndex;
+	while ( cur != endPos )
+	{
+		m_pData[cur] = m_pData[next];
+
+		cur = next;
+		next = (next+1)%(int)m_Capacity;
+	}
+
+	m_RightIndex = m_RightIndex-1 < 0 ? (int)m_Capacity-1 : m_RightIndex-1;
 }
 
 template<class T>

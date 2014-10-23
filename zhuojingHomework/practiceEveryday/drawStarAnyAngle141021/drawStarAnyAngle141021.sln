@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "drawStarAnyAngle141021", "drawStarAnyAngle141021\drawStarAnyAngle141021.vcproj", "{087B86A6-BD1C-49CF-9E71-DA62BA24A845}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{087B86A6-BD1C-49CF-9E71-DA62BA24A845}.Debug.ActiveCfg = Debug|Win32
+		{087B86A6-BD1C-49CF-9E71-DA62BA24A845}.Debug.Build.0 = Debug|Win32
+		{087B86A6-BD1C-49CF-9E71-DA62BA24A845}.Release.ActiveCfg = Release|Win32
+		{087B86A6-BD1C-49CF-9E71-DA62BA24A845}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

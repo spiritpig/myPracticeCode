@@ -105,18 +105,6 @@ void tower_Slipper::update()
 {
 	_processInput();
 
-	m_TowerBulletState.pos += m_TowerBulletState.dir*m_TowerBulletState.speed
-								*m_pEngine->Timer_GetDelta();
-}
-
-void tower_Slipper::render()
-{
-	m_pTowerSpr->Render( m_TowerState.pos.x, m_TowerState.pos.y );
-	m_pTowerBulletSpr->Render( m_TowerBulletState.pos.x, m_TowerBulletState.pos.y );
-}
-
-void tower_Slipper::_processInput()
-{
 	static POINT mousePos;
 	GetCursorPos( &mousePos );
 	ScreenToClient( m_hWnd, &mousePos );
@@ -130,5 +118,19 @@ void tower_Slipper::_processInput()
 		{
 			m_TowerBulletState.pos = m_TowerState.pos;
 		}
+
+		// 更新子弹的坐标
+		m_TowerBulletState.pos += m_TowerBulletState.dir*m_TowerBulletState.speed
+									*m_pEngine->Timer_GetDelta();
 	}
+}
+
+void tower_Slipper::render()
+{
+	m_pTowerSpr->Render( m_TowerState.pos.x, m_TowerState.pos.y );
+	m_pTowerBulletSpr->Render( m_TowerBulletState.pos.x, m_TowerBulletState.pos.y );
+}
+
+void tower_Slipper::_processInput()
+{
 }
