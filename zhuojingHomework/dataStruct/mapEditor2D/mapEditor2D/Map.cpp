@@ -196,6 +196,7 @@ void Map::Init()
 	m_curEditState = ES_SPACE;
 	m_curPFMethod = DEPTH_FIRST_SEARCH;
 	m_curPath_Dfs.reserve(m_MapHeight*m_MapWidth);
+	m_PathData.reserve(m_MapHeight*m_MapWidth);
 
 	m_Hwnd = GetActiveWindow();
 }
@@ -214,13 +215,11 @@ void Map::Update()
 					m_EndPoint.x, m_EndPoint.y, m_curPath_Dfs );
 				startPathFinding = false;
 
-				dfsNode pPoint;
-				while(!m_curPath_Dfs.empty())
+				int index = m_curPath_Dfs.size()-1;
+				while( index > -1 )
 				{
-					pPoint = m_curPath_Dfs.back();
-					m_Mapdata[pPoint.pos.y][pPoint.pos.x] = PATH;
-
-					m_curPath_Dfs.pop_back();
+					m_Mapdata[m_curPath_Dfs[index].pos.y][m_curPath_Dfs[index].pos.x] = PATH;
+					--index;
 				}
 			}
 			break;
@@ -232,11 +231,11 @@ void Map::Update()
 					m_EndPoint.x, m_EndPoint.y, m_curPath_BfsOrAStar  );
 				startPathFinding = false;
 
-				POINT pPoint;
-				while(!m_curPath_BfsOrAStar.Empty())
+				int index = m_curPath_BfsOrAStar.Size()-1;
+				while( index > -1 )
 				{
-					m_curPath_BfsOrAStar.Pop( pPoint );
-					m_Mapdata[pPoint.y][pPoint.x] = PATH;
+					m_Mapdata[m_curPath_BfsOrAStar[index].y][m_curPath_BfsOrAStar[index].x] = PATH;
+					--index;
 				}
 			}
 			break;
@@ -248,11 +247,11 @@ void Map::Update()
 					m_EndPoint.x, m_EndPoint.y, m_curPath_BfsOrAStar  );
 				startPathFinding = false;
 
-				POINT pPoint;
-				while(!m_curPath_BfsOrAStar.Empty())
+				int index = m_curPath_BfsOrAStar.Size()-1;
+				while( index > -1 )
 				{
-					m_curPath_BfsOrAStar.Pop( pPoint );
-					m_Mapdata[pPoint.y][pPoint.x] = PATH;
+					m_Mapdata[m_curPath_BfsOrAStar[index].y][m_curPath_BfsOrAStar[index].x] = PATH;
+					--index;
 				}
 			}
 			break;
@@ -307,19 +306,27 @@ void Map::Render()
 
 void Map::saveMap( char *filename )
 {
-	FILE *fp = fopen( filename, "w");
-	if ( !fp )
+	if ( !isPathDisplay )
 	{
-		MessageBox( m_Hwnd, "保存地图错误：文件无法创建", "错误", 0 );
+		FILE *fp = fopen( filename, "w");
+		if ( !fp )
+		{
+			MessageBox( m_Hwnd, "保存地图错误：文件无法创建", "错误", 0 );
+		}
+
+		fwrite( &m_MapWidth, sizeof(int), 1, fp );
+		fwrite( &m_MapHeight, sizeof(int), 1, fp );
+		fwrite( m_initMapdata, sizeof(char), m_MapHeight*m_MapWidth, fp );
+		fwrite( &m_PathData[0], sizeof(POINT), m_PathData.size(), fp );
+
+		fclose(fp);
+
+		MessageBox( m_Hwnd, "保存地图成功！", "成功", 0 );
 	}
-
-	fwrite( &m_MapWidth, sizeof(int), 1, fp );
-	fwrite( &m_MapHeight, sizeof(int), 1, fp );
-	fwrite( m_initMapdata, sizeof(char), m_MapHeight*m_MapWidth, fp );
-
-	fclose(fp);
-
-	MessageBox( m_Hwnd, "保存地图成功！", "成功", 0 );
+	else
+	{
+		MessageBox( m_Hwnd, "正在显示路径，无法保存！", "错误", 0 );
+	}
 }
 
 void Map::changeBlockAttribute( POINT pos )
@@ -356,6 +363,8 @@ void Map::changeBlockAttribute( POINT pos )
 			{
 				m_StartPoint.x = pos.x;
 				m_StartPoint.y = pos.y;
+				m_Mapdata[pos.y][pos.x] = SPACE;
+				m_initMapdata[pos.y][pos.x] = SPACE;
 			}
 			break;
 
@@ -363,8 +372,14 @@ void Map::changeBlockAttribute( POINT pos )
 			{
 				m_EndPoint.x = pos.x;
 				m_EndPoint.y = pos.y;
+				m_Mapdata[pos.y][pos.x] = SPACE;
+				m_initMapdata[pos.y][pos.x] = SPACE;
 			}
 			break;
 		}
+	}
+	else
+	{
+		MessageBox( m_Hwnd, "正在显示路径，无法改变格子属性！", "错误", 0 );
 	}
 }

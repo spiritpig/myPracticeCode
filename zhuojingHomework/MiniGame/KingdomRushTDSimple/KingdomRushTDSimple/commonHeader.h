@@ -1,0 +1,24 @@
+//////////////////////////////////////////////////////////////////////////
+//
+//	通用定义文件，将所有的包含关系集中到这个文件中方便管理
+//
+//////////////////////////////////////////////////////////////////////////
+#ifndef COMMONHEADER
+#define COMMONHEADER
+
+#include <Windows.h>
+#include <stdio.h>
+#include <math.h>
+#include <list>
+using std::list;
+#include <Sgge.h>
+#pragma comment( lib, "sgge.lib" )
+
+
+
+//////////////////////////////////////////////////////////////////////////
+#include "Vector2D.h"
+#include "KRMap.h"
+#include "GameManager.h"
+
+#endif	// END COMMONHEADER

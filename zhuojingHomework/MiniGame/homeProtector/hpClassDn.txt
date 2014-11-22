@@ -19,7 +19,7 @@ struct towerState
     DAMAGE_TYPE at;
 };
 
-class iTower
+class baseTower
 {
 public:
 	baseTower(void);
@@ -39,21 +39,4 @@ protected:
 	virtual void _processInput() = 0;
 
 	towerState m_towerState;
-};
-
-
-
-//////////////////////////////////////////////////////////////////
-//	基础生物类（怪物和建筑物可能会产生的士兵都属于生物）
-//////////////////////////////////////////////////////////////////
-class iLife
-{
-public:
-	iLife();
-	~iLife();
-	
-	virtual void move( const vector2 &goal ) = 0;
-
-protected:
-	lifeState m_lifeState;
 };

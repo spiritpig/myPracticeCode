@@ -54,6 +54,7 @@ void Manage::_ProcessInput()
 	// 开始寻路操作
 	if( m_pSgge->Input_KeyDown( SGGEK_RETURN ) )
 	{
+		m_pMap->turnOnPathDisplay();
 		m_pMap->setStartPathFinding(true);
 	}
 	else

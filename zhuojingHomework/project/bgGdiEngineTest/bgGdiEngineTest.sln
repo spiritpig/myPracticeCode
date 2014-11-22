@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bgGdiEngineTest", "bgGdiEngineTest\bgGdiEngineTest.vcproj", "{66913FC2-2792-40F3-B516-5B8E287C0676}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{66913FC2-2792-40F3-B516-5B8E287C0676}.Debug.ActiveCfg = Debug|Win32
+		{66913FC2-2792-40F3-B516-5B8E287C0676}.Debug.Build.0 = Debug|Win32
+		{66913FC2-2792-40F3-B516-5B8E287C0676}.Release.ActiveCfg = Release|Win32
+		{66913FC2-2792-40F3-B516-5B8E287C0676}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

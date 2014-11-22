@@ -141,7 +141,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		{
 			hdc = GetDC( hWnd );
 
-			DrawTaiJi( hdc, 200, 200, 100, RGB( 128, 255, 128 ), RGB( 0, 0, 255 ) );
+			DrawTaiJi( hdc, 200, 200, 100, RGB( 128, 0, 128 ), RGB( 0, 0, 255 ) );
 
 			ReleaseDC( hWnd, hdc );
 		}

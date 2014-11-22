@@ -13,8 +13,14 @@ public:
 	void changeBlockAttribute( POINT pos );
 	void saveMap( char *filename );
 
+	void turnOnPathDisplay()
+	{
+		isPathDisplay = true;
+	}
+
 	void turnOffPathDisplay()
 	{
+		isPathDisplay = false;
 		memcpy(m_Mapdata,m_initMapdata,sizeof(m_Mapdata));
 	}
 
@@ -102,6 +108,8 @@ private:
 	bfsPathFinder m_BfsPfMan;
 	aStarPathFinder m_AStarPfMan;
 	StackArray<POINT,ROW*COL> m_curPath_BfsOrAStar;
+
+	vector<POINT> m_PathData;
 };
 
 #endif
